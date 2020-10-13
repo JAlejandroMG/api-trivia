@@ -1,0 +1,30 @@
+//Programmer Jairo Felipe Nieto
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export default filterCategories;
