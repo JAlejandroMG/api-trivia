@@ -11,6 +11,8 @@ function getQuestions() {
         .then(data => printCards(data.results))
 }
 
+// console.log(datos);
+
 function printCards(questions) {
     const container = document.getElementById('container-cards');
     container.innerHTML = '';
@@ -18,6 +20,7 @@ function printCards(questions) {
         const card = returnCardHTML(question);
         container.innerHTML += card;
     });
+    // poner las preguntas en mi página web
 }
 
 function returnCardHTML(q) {
@@ -53,7 +56,6 @@ function returnAnswersHTML(correct, incorrects) {
 
 
     return correctHTML + incorrectHTML;
-
 }
 
 
