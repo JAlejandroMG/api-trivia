@@ -1,6 +1,6 @@
-import { filterCategories } from './filter-categories.js';
-import { filterDifficulty } from './filter-difficulty.js';
-import { filterType } from './filter-type.js';
+// import { filterCategories } from './filter-categories.js';
+// import { filterDifficulty } from './filter-difficulty.js';
+// import { filterType } from './filter-type.js';
 
 
 
@@ -82,10 +82,12 @@ function returnAnswersHTML(correct, incorrects) {
 }
 
 
+SelectCategory();
+
 window.getQuestions = getQuestions;
 
 SelectCategory();
 
-filterCategories();
-filterDifficulty();
-filterType();
+// filterCategories();
+// filterDifficulty();
+// filterType();
