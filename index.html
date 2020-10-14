@@ -11,13 +11,19 @@
         <div>
             <div class="form-group">
                 <label for="questions-number">Elige cuántas preguntas quieres</label>
-                <select onchange="getQuestions()" class="form-control" id="questions-number"></select>
-                <select class="form-control" id="questions-number">
+                <select onchange="getQuestions()" class="form-control" id="questions-number">
                   <option value="5">5</option>
                   <option value="10">10</option>
                   <option value="15">15</option>
                   <option value="20">20</option>
                 </select>
+
+                <div class="form-group">
+                    <label for="category-number">Eige la categoria</label>
+                    <select class="form-control" id="category-number">
+                    </select>
+                </div>
+                
             </div>
 
         <!-- Aquí van las tarjetas -->
