@@ -86,7 +86,7 @@ SelectCategory();
 
 window.getQuestions = getQuestions;
 
-
+SelectCategory();
 
 // filterCategories();
 // filterDifficulty();
