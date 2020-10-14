@@ -8,28 +8,50 @@
 </head>
 <body>
     <div class="container mt-5">
-        <div>
-            <div class="form-group">
-                <label for="questions-number">Elige cuántas preguntas quieres</label>
-                <select onchange="getQuestions()" class="form-control" id="questions-number">
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
-                </select>
+        <form onsubmit="event.preventDefault(), getQuestions()">
 
-                <div class="form-group">
-                    <label for="category-number">Eige la categoria</label>
-                    <select class="form-control" id="category-number">
-                    </select>
-                </div>
-                
-            </div>
+          <div class="form-group">
+              <label for="questions-number">Choose the question's quantity</label>
+              <select class="form-control" id="questions-number">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+          </div>
+
+          <div class="form-group">
+              <label for="questions-categories">Choose the question's category</label>
+              <select class="form-control" id="questions-categories">
+              </select>
+          </div>
+
+          <div class="form-group">
+            <label for="questions-difficulty">Choose the question's difficulty</label>
+            <select class="form-control" id="questions-difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="questions-type">Choose the question's type</label>
+            <select class="form-control" id="questions-type">
+              <option value="multiple">Multiple Choice</option>
+              <option value="boolean">True / False</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Select the questions</button>
+              
+        </form>
 
         <!-- Aquí van las tarjetas -->
         <div id="container-cards">
-
         </div>
+
+    </div>
 
     <script type ="module" src="./js/main.js"></script>
 </body>
