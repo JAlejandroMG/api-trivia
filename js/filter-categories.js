@@ -1,5 +1,14 @@
 //Programmer Jairo Felipe Nieto
 
+
+
+export function getCategory() {
+  const category = document.getElementById('questions-categories').value
+  return category;
+}
+
+
+
 function getCategories() {
   fetch(`https://opentdb.com/api_category.php`)
   .then(response => response.json())

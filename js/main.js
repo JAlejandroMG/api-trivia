@@ -1,12 +1,13 @@
 import getCategories from './filter-categories.js';
-// import { filterDifficulty } from './filter-difficulty.js';
-// import { filterType } from './filter-type.js';
+import { getCategory } from './filter-categories.js';
+import { getDifficulty } from './filter-difficulty.js';
+import { getType } from './filter-type.js';
 
 
 
 function getQuestions() {
     const questionsQuantity = document.getElementById('questions-number').value
-    fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}`)
+    fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${getCategory()}&difficulty=${getDifficulty()}&type=${getType()}`)
         .then(response => response.json())
         .then(data => printCards(data.results))
 }
@@ -25,7 +26,7 @@ function printCards(questions) {
 }
 
 function returnCardHTML(q) {
-    const card = `<div class="card">
+    const card = `<div class="card mt-3">
                     <div class="card-body">
                     <h5 class="card-title">${q.category}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
@@ -63,9 +64,6 @@ function returnAnswersHTML(correct, incorrects) {
 getCategories();
 
 window.getQuestions = getQuestions;
-
-SelectCategory();
-
-// filterCategories();
-// filterDifficulty();
-// filterType();
+window.getCategory = getCategory;
+window.getDifficulty = getDifficulty;
+window.getType = getType;
