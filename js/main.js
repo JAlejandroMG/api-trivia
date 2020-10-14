@@ -1,4 +1,4 @@
-// import { filterCategories } from './filter-categories.js';
+import getCategories from './filter-categories.js';
 // import { filterDifficulty } from './filter-difficulty.js';
 // import { filterType } from './filter-type.js';
 
@@ -11,28 +11,6 @@ function getQuestions() {
         .then(data => printCards(data.results))
 }
 
-function SelectCategory() {
-    fetch(`https://opentdb.com/api_category.php`)
-    .then(response => response.json())
-    .then(data => printSelectCategory(data.trivia_categories))
-}
-
-function printSelectCategory(categorys) {
-
-    const container = document.getElementById('category-number');
-    container.innerHTML = '';
-    categorys.forEach(category => {
-        const list = returnSelectCategory(category);
-        container.innerHTML += list;
-    });
-
-    
-}
-
-function returnSelectCategory(category) {
-    const list = `<option value=${category.id}> ${category.name} </option> `;
-    return list;
-}
 
 // console.log(datos);
 
@@ -82,7 +60,7 @@ function returnAnswersHTML(correct, incorrects) {
 }
 
 
-SelectCategory();
+getCategories();
 
 window.getQuestions = getQuestions;
 
