@@ -13,6 +13,7 @@ function getQuestions() {
 }
 
 
+// console.log(datos);
 
 function printCards(questions) {
     const container = document.getElementById('container-cards');
@@ -60,7 +61,6 @@ function returnAnswersHTML(correct, incorrects, qindex) {
 
     return incorrectHTML;
 }
-
 
 
 getCategories();
