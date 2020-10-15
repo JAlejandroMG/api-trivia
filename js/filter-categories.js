@@ -1,7 +1,5 @@
 //Programmer Jairo Felipe Nieto
 
-
-
 export function getCategory() {
   const category = document.getElementById('questions-categories').value
   return category;

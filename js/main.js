@@ -13,52 +13,54 @@ function getQuestions() {
 }
 
 
-// console.log(datos);
 
 function printCards(questions) {
     const container = document.getElementById('container-cards');
     container.innerHTML = '';
-    questions.forEach(question => {
-        const card = returnCardHTML(question);
+    questions.forEach((question, qindex) => {
+        const card = returnCardHTML(question, qindex);
         container.innerHTML += card;
     });
+    container.innerHTML += `<button type="button" class="btn btn-primary btn-lg btn-block mt-5">Block level button</button>`;
     // poner las preguntas en mi página web
 }
 
-function returnCardHTML(q) {
-    const card = `<div class="card mt-3 mb-3">
+
+function returnCardHTML(q, qindex) {
+    const card = `<div class="card col-md-6 mt-3">
                     <div class="card-body">
                     <h5 class="card-title">${q.category}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
-                    ${returnAnswersHTML(q.correct_answer, q.incorrect_answers)}           
+                        ${returnAnswersHTML(q.correct_answer, q.incorrect_answers, qindex)}           
+
                     </div>
                 </div>`
     return card;
 }
 
 
-function returnAnswersHTML(correct, incorrects) {
-    const correctHTML = `<div class="form-check">
+function returnAnswersHTML(correct, incorrects, qindex) {
+    /* const correctHTML = `<div class="form-check">
                             <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                             <label class="form-check-label" for="exampleRadios1">
                             ${correct}
                             </label>
-                        </div>`;
-
+                        </div>`; */
+    incorrects.push(correct);
 
     let incorrectHTML = '';
-    incorrects.forEach((incorrect) => {
+    incorrects.forEach((incorrect, aindex) => {
         incorrectHTML += `<div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
+                            <input class="form-check-input" type="radio" name="question-${qindex}" id="answer-${qindex}${aindex}" value="${incorrect}" required>
+                            <label class="form-check-label" for="answer-${qindex}${aindex}">
                             ${incorrect}
                             </label>
                         </div>`;
     })
 
-
-    return correctHTML + incorrectHTML;
+    return incorrectHTML;
 }
+
 
 
 getCategories();
