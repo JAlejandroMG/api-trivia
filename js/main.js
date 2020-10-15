@@ -26,11 +26,11 @@ function printCards(questions) {
 }
 
 function returnCardHTML(q) {
-    const card = `<div class="card mt-3">
+    const card = `<div class="card mt-3 mb-3">
                     <div class="card-body">
                     <h5 class="card-title">${q.category}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
-                        ${returnAnswersHTML(q.correct_answer, q.incorrect_answers)}           
+                    ${returnAnswersHTML(q.correct_answer, q.incorrect_answers)}           
                     </div>
                 </div>`
     return card;
