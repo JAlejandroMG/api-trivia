@@ -1,0 +1,12 @@
+body {
+    background: url(https://images.pexels.com/photos/3931501/pexels-photo-3931501.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+label {
+    color:#007bff;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}

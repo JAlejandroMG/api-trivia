@@ -25,12 +25,14 @@ function printCards(questions) {
     // poner las preguntas en mi página web
 }
 
+
 function returnCardHTML(q, qindex) {
     const card = `<div class="card col-md-6 mt-3">
                     <div class="card-body">
                     <h5 class="card-title">${q.category}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
                         ${returnAnswersHTML(q.correct_answer, q.incorrect_answers, qindex)}           
+
                     </div>
                 </div>`
     return card;
