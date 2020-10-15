@@ -4,3 +4,9 @@ body {
     background-size: cover;
 }
 
+label {
+    color:#007bff;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+}
