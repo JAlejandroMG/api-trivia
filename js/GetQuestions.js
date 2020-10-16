@@ -12,7 +12,6 @@ export default class GetQuestions {
       fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${gqp.getCategory()}&difficulty=${gqp.getDifficulty()}&type=${gqp.getType()}`)
           .then(response => response.json())
           .then(data => this.sendDataResults(data.results))
-                        //* return data.results;
   }
 
   sendDataResults(dataQuestions) {
@@ -23,39 +22,63 @@ export default class GetQuestions {
   printCards(questions) {
     const container = document.getElementById('container-cards');
     container.innerHTML = '';
-    questions.forEach((question, qindex) => {
-        const card = this.returnCardHTML(question, qindex);
+    questions.forEach((question, qIndex) => {
+        const card = this.returnCardHTML(question, qIndex);
         container.innerHTML += card;
     });
     container.innerHTML += `<button type="button" class="btn btn-primary btn-lg btn-block mt-5">Block level button</button>`;
-    //* poner las preguntas y el botón de submit de las respuestas en mi página web
+    //* poner las preguntas y el botón de submit de las respuestas en la página web
   }
 
-  returnCardHTML(q, qindex) {
+  returnCardHTML(q, qIndex) {
     const card = `<div class="card col-md-6 mt-3">
                     <div class="card-body">
                     <h5 class="card-title">${q.category}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
-                        ${this.returnAnswersHTML(q.correct_answer, q.incorrect_answers, qindex)}           
+                        ${this.returnAnswersHTML(q.type, q.correct_answer, q.incorrect_answers, qIndex)}           
                     </div>
                 </div>`
     return card;
   }
 
-  returnAnswersHTML(correct, incorrects, qindex) {
+  returnAnswersHTML(type, correct, incorrects, qIndex) {
     incorrects.push(correct);
+    let orderedArray = [];
 
-    let incorrectHTML = '';
-    incorrects.forEach((incorrect, aindex) => {
-        incorrectHTML += `<div class="form-check">
-                            <input class="form-check-input" type="radio" name="question-${qindex}" id="answer-${qindex}${aindex}" value="${incorrect}" required>
-                            <label class="form-check-label" for="answer-${qindex}${aindex}">
-                            ${incorrect}
+    if(type === "multiple") {
+      function newOrder() {
+        const min = 0;
+        let max = 4;      
+        let index = 0;
+        const newOrder = [];
+      
+        for(let i = 0; i < 4; i++) {
+          function randomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+          }
+          index = (randomNumber(min, max));
+          newOrder.push(incorrects[index]);
+          incorrects.splice(index, 1);
+          max--;
+        }
+      
+        return newOrder;
+      }
+
+      orderedArray = newOrder()
+    }
+
+    let answersHTML = '';
+    orderedArray.forEach((ordered, aIndex) => {
+        answersHTML += `<div class="form-check">
+                            <input class="form-check-input" type="radio" name="question-${qIndex}" id="answer-${qIndex}${aIndex}" value="${ordered}" required>
+                            <label class="form-check-label" for="answer-${qIndex}${aIndex}">
+                            ${ordered}
                             </label>
                         </div>`;
     })
 
-    return incorrectHTML;
+    return answersHTML;
   }
 
 }

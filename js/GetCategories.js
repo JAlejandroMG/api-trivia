@@ -15,6 +15,7 @@ export default class GetCategories {
           const list = this.returnGetCategory(category);
           container.innerHTML += list;
       });
+      //* poner las categorías de las preguntas en el selector de la forma
   }
 
   returnGetCategory(category) {
