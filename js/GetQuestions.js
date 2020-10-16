@@ -26,12 +26,12 @@ export default class GetQuestions {
         const card = this.returnCardHTML(question, qIndex);
         container.innerHTML += card;
     });
-    container.innerHTML += `<button type="button" class="btn btn-primary btn-lg btn-block mt-5 mb-5">Block level button</button>`;
+    container.innerHTML += `<button type="button" class="btn btn-primary btn-lg btn-block mt-5 mb-5 col-lg-8 col-md-8 col-sm-12">Block level button</button>`;
     //* poner las preguntas y el botón de submit de las respuestas en la página web
   }
 
   returnCardHTML(q, qIndex) {
-    const card = `<div class="card col-md-6 mt-3">
+    const card = `<div class="card col-lg-5 col-md-5 col-sm-12 mt-3">
                     <div class="card-body">
                     <h5 class="card-title">${q.category}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
