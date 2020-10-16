@@ -5,13 +5,14 @@ export default class GetQuestionsParameters {
     return category;
   }
 
-  getDifficulty = () => {
+  getDifficulty() {
     const difficulty = document.getElementById('questions-difficulty').value
     return difficulty;
   }
 
-  getType = () => {
+  getType() {
     const type = document.getElementById('questions-type').value
     return type;
   }
+
 }
