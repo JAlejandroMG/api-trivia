@@ -16,7 +16,7 @@ export default class GetQuestions {
 
   sendDataResults(dataQuestions) {
     this.printCards(dataQuestions);
-    score.getScore(dataQuestions);
+    score.getCorrectAnswers(dataQuestions);
   }
 
   printCards(questions) {
@@ -26,7 +26,7 @@ export default class GetQuestions {
         const card = this.returnCardHTML(question, qIndex);
         container.innerHTML += card;
     });
-    container.innerHTML += `<button type="button" class="btn btn-primary btn-lg btn-block mt-5">Block level button</button>`;
+    container.innerHTML += `<button type="button" class="btn btn-primary btn-lg btn-block mt-5 mb-5">Block level button</button>`;
     //* poner las preguntas y el botón de submit de las respuestas en la página web
   }
 
