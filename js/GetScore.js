@@ -1,5 +1,4 @@
 export default class GetScore {
-
   getCorrectAnswers(dataResults) {
     const correctAnswers = [];
 
@@ -8,7 +7,11 @@ export default class GetScore {
     })
 
     // console.log(dataResults);
-    console.log(correctAnswers);
+
+
+    // console.log(correctAnswers);
+    
+    
     // this.sendCorrectAnswers(correctAnswers);
   }
 
@@ -23,7 +26,6 @@ export default class GetScore {
     console.log(questionsQuantity); */
     alert('Aquí ando...')
   }
-
 
 
   /* getUserAnswers(answers) {
@@ -41,5 +43,4 @@ export default class GetScore {
     }
     console.log(userAnswers);
   }*/
-
-} 
+}
