@@ -1,23 +1,71 @@
 import GetQuestionsParameters from './GetQuestionsParameters.js';
 import GetScore from './GetScore.js';
 
+
 const gqp = new GetQuestionsParameters();
 const score = new GetScore();
 
 
-export default class GetQuestions {
 
+export default class GetQuestions {
   getQuestions() {
-      const questionsQuantity = document.getElementById('questions-number').value
-      fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${gqp.getCategory()}&difficulty=${gqp.getDifficulty()}&type=${gqp.getType()}`)
-          .then(response => response.json())
-          .then(data => this.sendDataResults(data.results))
+    const questionsQuantity = document.getElementById('questions-number').value
+
+    if((gqp.getCategory() === "Any category") && (gqp.getDifficulty() === "Any difficulty") && (gqp.getType() === "Any type")) {
+      fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}`)
+        .then(response => response.json())
+        .then(data => this.sendDataResults(data.results))
+    }
+
+    else if((gqp.getCategory() === "Any category") && (gqp.getDifficulty() === "Any difficulty")) {
+      fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&type=${gqp.getType()}`)
+        .then(response => response.json())
+        .then(data => this.sendDataResults(data.results))
+    }
+    
+    else if((gqp.getCategory() === "Any category") && (gqp.getType() === "Any type")) {
+      fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&difficulty=${gqp.getDifficulty()}`)
+        .then(response => response.json())
+        .then(data => this.sendDataResults(data.results))
+    }
+
+    else if((gqp.getDifficulty() === "Any difficulty") && (gqp.getType() === "Any type")) {
+      fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${gqp.getCategory()}`)
+        .then(response => response.json())
+        .then(data => this.sendDataResults(data.results))
+    }
+
+    else if((gqp.getCategory() === "Any category")) {
+      fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&difficulty=${gqp.getDifficulty()}&type=${gqp.getType()}`)
+        .then(response => response.json())
+        .then(data => this.sendDataResults(data.results))
+    }
+
+    else if((gqp.getDifficulty() === "Any difficulty")) {
+      fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${gqp.getCategory()}&type=${gqp.getType()}`)
+        .then(response => response.json())
+        .then(data => this.sendDataResults(data.results))
+    }
+
+    else if((gqp.getType() === "Any type")) {
+      fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${gqp.getCategory()}&difficulty=${gqp.getDifficulty()}`)
+        .then(response => response.json())
+        .then(data => this.sendDataResults(data.results))
+    }
+    
+    else {
+        fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${gqp.getCategory()}&difficulty=${gqp.getDifficulty()}&type=${gqp.getType()}`)
+            .then(response => response.json())
+            .then(data => this.sendDataResults(data.results))
+    }
   }
+    
 
   sendDataResults(dataQuestions) {
     this.printCards(dataQuestions);
-    score.getCorrectAnswers(dataQuestions);
+    // score.getCorrectAnswers(dataQuestions);
   }
+
 
   printCards(questions) {
     const container = document.getElementById('container-cards');
@@ -26,12 +74,13 @@ export default class GetQuestions {
         const card = this.returnCardHTML(question, qIndex);
         container.innerHTML += card;
     });
-    container.innerHTML += `<button type="button" class="btn btn-primary btn-lg btn-block mt-5 mb-5">Block level button</button>`;
-    //* poner las preguntas y el botón de submit de las respuestas en la página web
+    container.innerHTML += `<button type="button" class="btn btn-primary btn-lg btn-block mt-5 mb-5 col-lg-8 col-md-8 col-sm-12">Block level button</button>`;
+    //* Poner las preguntas y el botón de submit de las respuestas en la página web
   }
 
+
   returnCardHTML(q, qIndex) {
-    const card = `<div class="card col-md-6 mt-3">
+    const card = `<div class="card col-lg-5 col-md-5 col-sm-12 mt-3">
                     <div class="card-body">
                     <h5 class="card-title">${q.category}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
@@ -40,6 +89,7 @@ export default class GetQuestions {
                 </div>`
     return card;
   }
+
 
   returnAnswersHTML(type, correct, incorrects, qIndex) {
     incorrects.push(correct);
@@ -64,9 +114,10 @@ export default class GetQuestions {
       
         return newOrder;
       }
-
       orderedArray = newOrder()
-    }
+    } else {
+        orderedArray = incorrects;
+      }
 
     let answersHTML = '';
     orderedArray.forEach((ordered, aIndex) => {
@@ -80,5 +131,4 @@ export default class GetQuestions {
 
     return answersHTML;
   }
-
 }

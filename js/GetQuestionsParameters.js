@@ -1,5 +1,4 @@
-export default class GetQuestionsParameters {
-  
+export default class GetQuestionsParameters {  
   getCategory() {
     const category = document.getElementById('questions-categories').value
     return category;
@@ -14,5 +13,4 @@ export default class GetQuestionsParameters {
     const type = document.getElementById('questions-type').value
     return type;
   }
-
 }
