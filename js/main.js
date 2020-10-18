@@ -37,7 +37,7 @@ function getCorrectAnswers(dataResults) {
 
 
 
-//@ Aquí creamos el arreglo de las respuestas del usuario
+//@ Aquí creamos el arreglo de las respuestas del usuario y damos el resultado
 const usersAnswers = [];
 
 function getUsersAnswers(){

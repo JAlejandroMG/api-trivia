@@ -5,7 +5,7 @@ export default class GetScore {
     correctAnswers.forEach((correctAnswer,index) => {
       correctAnswer === usersAnswers[index] ? counter++ : counter;
     })
-    return score = (counter / correctAnswers.length)*100;
+    return score = Math.round((counter / correctAnswers.length)*100);
   }
 
   giveResults(result) {
