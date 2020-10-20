@@ -76,23 +76,26 @@ export default class GetQuestions {
         container.innerHTML += card;
     });
   
-    container.innerHTML += `<button type="submit" class="btn btn-primary btn-lg btn-block mt-5 mb-5 col-md-6">Block level button</button>`;
+    container.innerHTML += `<div class="col-12 row justify-content-center">
+                              <button type="submit" class="btn btn-success btn-lg btn-block mt-5 mb-5 col-md-6">Ready!</button>
+                            </div>`;
     //* Poner las preguntas y el botón de submit de las respuestas en la página web
   }
 
 
   returnCardHTML(q, qIndex) {
-    const card = `<div class="card col-md-6 col-lg-4 mt-3">
-                    <div class="card-body">
-                    <h5 class="card-title">${q.category}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
-                    ${this.returnAnswersHTML(q.correct_answer, q.incorrect_answers, qIndex, q.type)}
+    const card = `<div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card mt-3 h-100">
+                      <div class="card-body">
+                      <h5 class="card-title">${q.category}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
+                      ${this.returnAnswersHTML(q.correct_answer, q.incorrect_answers, qIndex, q.type)}
+                    </div>
                   </div>`
     return card;
   }
 
-
-  returnAnswersHTML(correct, incorrects, qIndex, type) {
+   returnAnswersHTML(correct, incorrects, qIndex, type) {
     incorrects.push(correct);
 
     incorrects.sort(function(a, b){return 0.5 - Math.random()}); 
